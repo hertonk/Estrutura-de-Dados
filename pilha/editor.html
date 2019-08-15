@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Editor de Texto - Pilha</title>
+</head>
+<body>
+
+<textarea name="texto" id="texto" rows="10" cols="20" placeholder="O seu texto..."></textarea>
+<br>
+
+<button name="desfazer" id="desfazer" onclick="re();">Desfazer</button>
+
+<br>
+
+<h2>Adicionar</h2>
+
+<input type="text" name="add" id="add">
+
+<br>
+
+<button name="btn" id="btn" onclick="add();">Adicionar</button>
+
+
+<script type="text/javascript">
+
+// Variáveis para PILHA
+
+var pilha, contador, tamanhoMaximo;
+
+pilha = [];
+tamanhoMaximo = 100;
+contador = -1;
+
+// empilhar(pilha, 1);
+// empilhar(pilha, 5);
+// empilhar(pilha, 9);
+// desempilhar(pilha);
+// consultar(pilha, 5);
+// 
+// A única diferença aqui é que 
+// na remoção ao invés de adicionar -1
+// é adicionada uma " " no valor removido
+
+function empilhar(pilha, valor){
+
+	if(contador === tamanhoMaximo){
+		console.log("A pilha está cheia");
+	} else {
+		pilha[contador+1] = valor;
+		contador++; 
+		console.log("Contador: "+contador
+			);
+		console.log("Pilha:" +pilha);
+	}
+
+}
+
+function desempilhar(pilha){
+
+	if(contador === -1){
+
+		console.log("A pilha está vazia.");
+
+	} else {
+
+		pilha[contador] = "";
+		contador--;
+		console.log("Contador: "+contador);
+
+	} 
+
+}
+
+
+function consultar(pilha, valor){
+
+	if(contador === -1){
+
+		console.log("A pilha está vazia.");
+
+	} else {
+
+		if(valor === pilha[contador]){
+
+			console.log("O seu valor -"+valor+"- está na Pilha.");
+
+		} else {
+
+			console.log("Valor não encontrado.");
+
+		}
+
+	} 
+
+}
+
+// Adiciona um valor ao texto
+// Pega o valor digitado em #add
+function add(){
+
+	// Pega o valor digitado em #add
+	var name = document.querySelector("#add").value;
+
+	// Empilha valor 
+	empilhar(pilha, name);
+
+	// Mostra a pilha após o empilhamento
+	console.log(pilha);
+
+	// Limpa a caixa de texto
+	document.querySelector("#texto").value = "";
+
+	// Percorre a pilha e combina os textos presentes
+	// na pilha
+	pilha.forEach(juntar);
+}
+
+// Remove o valor da pilha
+// Desempilha o último valor
+function re(){
+
+	// Desempilha
+	desempilhar(pilha);
+
+	// Mostra a pilha após o desempilhamento
+	console.log(pilha);
+
+	// Limpa a caixa de texto
+	document.querySelector("#texto").value = "";
+
+	// Percorre a pilha e combina os textos presentes
+	// na pilha
+	pilha.forEach(juntar);
+}	
+
+
+// Função responsável por pegar cada índice na pilha
+// e colocar um atrás do outros.
+function juntar(item) {
+    document.querySelector("#texto").value += item;
+}
+
+</script>
+</body>
+</html>

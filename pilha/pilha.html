@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PILHA</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+<script type="text/javascript">
+	
+// Variáveis para PILHA
+
+var pilha, contador, tamanhoMaximo;
+
+// Inicialização das Variáveis
+pilha = [];
+// Tamanho máximo da pilha
+tamanhoMaximo = 10;
+// Contador para controlar a posição 
+// O valor começa como -1 pois o range de posições
+// são de 0 a 10
+contador = -1;
+
+// Chamadas das funções
+// Empilha o valor 1
+empilhar(pilha, 1);
+// Empilha o valor 5
+empilhar(pilha, 5);
+// Empilha o valor 9
+empilhar(pilha, 9);
+// Desempilha
+desempilhar(pilha);
+// Consulta o valor 5
+consultar(pilha, 5);
+
+// Função que define o empilhamento de valores
+// *parâmetros Pilha e Valor
+function empilhar(pilha, valor){
+
+	// Verifica se a pilha está cheia
+	// Testa se o valor do contador é igual ao valor máximo
+	// possível da pilha
+	if(contador === tamanhoMaximo){
+		// Imprime no console a mensagem de alerta
+		console.log("A pilha está cheia");
+	} else {
+
+		// Pega a pilha na posição do contador (posição atual) + 1
+		// e adiciona o valor a pilha
+		pilha[contador+1] = valor;
+		// Passa a posição a atual para a próxima (vazia)
+		contador++; 
+		// Imprime o valor de contador na pilha
+		console.log("Contador: "+contador
+			);
+		// Imprime no console o conteúdo da pilha
+		console.log("Pilha:" +pilha);
+	}
+
+}
+
+// Função de desempilhar valores
+// *parâmetros Pilha
+function desempilhar(pilha){
+
+	// Verifica se a pilha está vazia
+	if(contador === -1){
+		
+		// Imprime no console a mensagem de alerta
+		console.log("A pilha está vazia.");
+
+	} else {
+
+		// Atribuí o valor -1 na última posição da pilha
+		pilha[contador] = -1;
+		// Decrementa o contador para uma posição anterior
+		contador--;
+		// Imprime no console o valor de contador
+		console.log("Contador: "+contador);
+
+	} 
+
+}
+
+// Função que consulta um valor na pilha
+// *parâmetros Pilha e Valor
+function consultar(pilha, valor){
+
+	// Testa se a pilha é vazia
+	if(contador === -1){
+
+		/// Imprime no console a mensagem de alerta
+		console.log("A pilha está vazia.");
+
+	} else {
+
+		// Se o valor buscado for igual ao valor
+		// da posição atual da pilha
+		if(valor === pilha[contador]){
+
+			// Imprime no console a mensagem como valor
+			// e a posição em que esse encontra-se
+			console.log("O seu valor -"+valor+"- está na Pilha.");
+
+		} else {
+
+			// Imprime no console a mensagem de alerta
+			console.log("Valor não encontrado.");
+
+		}
+
+	} 
+
+}
+
+</script>
+</body>
+</html>

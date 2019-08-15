@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Navegador - Pilha</title>
+</head>
+<body>
+
+Endereço 
+<input type="text" name="add" id="add">
+
+<button name="btn" id="btn" onclick="ir();">IR</button>
+
+<iframe id="frame" src="http://localhost" style="width:100%; height: 800px;" frameborder="0">
+</iframe>
+
+<button name="desfazer" id="desfazer" onclick="voltar();">Voltar</button>
+
+<script type="text/javascript">
+
+// Variáveis para PILHA
+
+var pilha, contador, tamanhoMaximo;
+
+pilha = [];
+tamanhoMaximo = 100;
+contador = -1;
+
+// empilhar(pilha, 1);
+// empilhar(pilha, 5);
+// empilhar(pilha, 9);
+// desempilhar(pilha);
+// consultar(pilha, 5);
+
+function empilhar(pilha, valor){
+
+	if(contador === tamanhoMaximo){
+		console.log("A pilha está cheia");
+	} else {
+		pilha[contador+1] = valor;
+		contador++; 
+		console.log("Contador: "+contador
+			);
+		console.log("Pilha:" +pilha);
+	}
+
+}
+
+function desempilhar(pilha){
+
+	if(contador === -1){
+
+		console.log("A pilha está vazia.");
+
+	} else {
+
+		pilha[contador] = " ";
+		contador--;
+		console.log("Contador: "+contador);
+
+	} 
+
+}
+
+
+function consultar(pilha, valor){
+
+	if(contador === -1){
+
+		console.log("A pilha está vazia.");
+
+	} else {
+
+		if(valor === pilha[contador]){
+
+			console.log("O seu valor -"+valor+"- está na Pilha.");
+
+		} else {
+
+			console.log("Valor não encontrado.");
+
+		}
+
+	} 
+
+}
+
+// Função responsável por carregar endereço
+function ir(){
+
+	// Obtém o endereço digitado 
+	var name = document.querySelector("#add").value;
+
+	// Empilha o endereço digitado
+	empilhar(pilha, name);
+
+	// Substitui o valor do campo pelo valor inserido 
+	// na pilha
+	document.querySelector('#add').value = pilha[contador];
+
+	// Imprime valores da pilha
+	console.log(pilha);
+
+	// Define o endereço do frame o último item da pilha
+	document.querySelector('#frame').src = pilha[contador];
+	// Recarrega o frame
+	document.getElementById("frame").contentWindow.reset();
+}
+
+
+// Função que volta o frame para o endereço anteriormente aplicado
+function voltar(){
+
+	// Desempilha o último endereço
+	desempilhar(pilha);
+
+	// Exibe os valores presentes na pilha
+	console.log(pilha);
+
+	// Verifica se não possui mais nenhum valor
+	if(contador === - 1){
+
+		// Atribuí o valor de "vazio" ao campo de 
+		// endereço
+		document.querySelector('#add').value = " ";
+
+	} else {
+
+		// Coloca o último endereço da pilha
+		// no campo
+		document.querySelector('#add').value = pilha[contador];
+
+		// Muda o endereço do frame
+		// pegando o endereço anterior
+		document.querySelector('#frame').src = pilha[contador];
+
+		// Recarrega o frame
+		document.getElementById("frame").contentWindow.reset();
+
+	}
+
+}	
+
+
+</script>
+</body>
+</html>

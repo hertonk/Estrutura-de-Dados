@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Desafio 2 - Fila</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <script type="text/javascript">
+	
+		var fila_prioritaria = [];
+		var fila_correntista = [];
+		var fila_naocorrentista = [];
+		
+		var contador = 0;
+		
+		//tipo, 1-prioritária, 2-correntista, 3-não-correntista
+		function enfileirar(valor, tipo){
+			
+			if(tipo == 1){
+				
+				fila_prioritaria.push(valor);
+				console.log("Enfileiramento - Prioridade: "+fila_prioritaria);
+			
+			} else if(tipo == 2){
+			
+				fila_correntista.push(valor);
+				console.log("Enfileiramento - Correntista: "+fila_correntista);
+				
+			} else if(tipo == 3){
+			
+				fila_naocorrentista.push(valor);
+				console.log("Enfileiramento - Não correntista: "+fila_naocorrentista)
+			
+			}
+		
+		}
+		
+		function desenfileirar(){
+			
+			if((fila_prioritaria.length == 0 && fila_correntista.length == 0) && fila_naocorrentista.length == 0){
+			
+				console.log("Atendimento Finalizado!");
+			
+			}else{	
+				if(contador == 0 || contador == 1){
+					if(fila_prioritaria.length != 0){
+						fila_prioritaria.shift();
+						console.log("Desenfileiramento - Prioridade: "+fila_prioritaria);
+						
+						contador++;
+					} else {
+						contador = 2;
+					}
+					
+				} else if(contador == 2){
+					
+					if(fila_correntista.length != 0){
+						fila_correntista.shift();
+						console.log("Desenfileiramento - Correntista: "+fila_correntista);
+						
+						contador++;
+					} else{
+						contador = 3;
+					}
+					
+				} else if(contador == 3){
+					
+					if(fila_naocorrentista.length != 0){
+						fila_naocorrentista.shift();
+						console.log("Desenfileiramento - Não Correntista: "+fila_naocorrentista);
+						
+						contador = 0;
+					} else {
+						contador = 0;
+					}
+				}
+			
+			}
+		
+		}
+		
+		enfileirar("Herton", 1);
+		enfileirar("Layzon", 1);
+		enfileirar("Josimere", 1);
+		enfileirar("Lucas", 2);
+		enfileirar("Alex", 2);
+		enfileirar("Eldher", 2);
+		enfileirar("Firmo", 3);
+		enfileirar("Alícia", 3);
+		
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		desenfileirar();
+		
+		
+		
+	</script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Desafio - Deques</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var deque = [];
+
+
+function inserir_fim(valor){
+	
+	deque.push(valor);
+	console.log("Inserindo no final: "+deque);
+	
+}
+
+function inserir_inicio(valor){
+	
+	deque.unshift(valor);
+	console.log("Inserindo no inicio: "+deque);
+	
+}
+
+function remover_fim(){
+	
+	if(deque.length == 0){
+		
+		console.log("O deque está vazio!");
+		
+	} else {
+		
+		deque.pop();
+		console.log("Removendo no final: "+deque);
+		
+	}
+	
+	
+	
+}
+
+function remover_inicio(){
+	
+	if(deque.length == 0){
+		
+		console.log("O deque está vazio!");
+		
+	} else {
+	
+		deque.shift();
+		console.log("Removendo no inicio: "+deque);
+		
+	}
+	
+}
+
+function ver(pos, ordem){
+
+	if(ordem == "d"){
+
+		var novaPos = pos - 1;
+
+		console.log("Na posição "+pos+" está "+deque[novaPos]);
+
+	} else if(ordem == "i"){
+
+		var contador = 1;
+
+		for(var i = deque.length - 1; i >= 0 ; i-- ){
+
+			if(contador == pos){
+
+				console.log("Na posição "+pos+" está "+deque[i]);
+
+			}
+
+			contador++;
+
+		}
+
+	}
+
+
+}
+
+inserir_inicio("Lucas");
+inserir_fim("Layzon");
+inserir_fim("Josimere");
+inserir_fim("Firmo");
+inserir_fim("Dilane");
+inserir_fim("Luézia");
+inserir_fim("Alex");
+inserir_fim("Alícia");
+inserir_fim("Ana Carolina");
+inserir_fim("Eldher");
+ver(2, "d");
+
+</script>
+</body>
+</html>

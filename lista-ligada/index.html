@@ -11,23 +11,35 @@ var No = function(conteudo, prox) {
 };
 
 var head = null;
+var contador = 0;
 
+var no1 = new No("Herton", null);
+var no2 = new No("Carol", null);
+var no3 = new No("Eldher", null);
 
 function add(no){
 
 	if(head == null){
 
 		head = no;
+		contador++;
 
 	} else {
 
-		if(head.prox == null){
-			
-			head.prox = no;
+		var noAtual = head
 
-		} else {
+		for(var i = 1; i <= contador; i++){
 
+			if(noAtual.prox == null){
 
+				noAtual.prox = no;
+				contador++;
+
+			} else {
+
+				noAtual = noAtual.prox;
+
+			}
 
 		}
 
@@ -35,31 +47,26 @@ function add(no){
 
 }
 
-var no1 = new No("Herton", null);
-var no2 = new No("Carol", null);
+function show(no){
+	var roda = true;
+	var conta = 1;
+	while(roda != false){
+		if(no.prox != null){
+			console.log(conta+" : "+no.conteudo+", próximo: "+no.prox.conteudo+"\n");
+			no = no.prox;
+			conta++;
+		} else {
+			console.log(conta+" : "+no.conteudo+", é o último "+"\n");
+			roda = false;
+		}
+	}
+}
 
 add(no1);
 add(no2);
-
+add(no3);
 
 show(head);
-
-function show(no){
-
-	var roda = true;
-
-	while(roda != false){
-
-		console.log(no.conteudo+"\n");
-
-		if(no.prox != null){
-			no = no.prox;
-		} else {
-			roda = false;
-		}
-
-	}
-}
 
 </script>
 </head>

@@ -16,6 +16,32 @@ var contador = 0;
 var no1 = new No("Herton", null);
 var no2 = new No("Carol", null);
 var no3 = new No("Eldher", null);
+var no4 = new No("Lucas", null);
+
+function addpos(no, pos){
+
+	var noAtual = head;
+	var noAnt = null;
+
+	for(var i = 1; i <= pos; i++){
+
+			if(pos == i){
+
+				no.prox = noAtual;
+				noAnt.prox = no;
+
+				contador++;
+
+			} else {
+
+				noAnt = noAtual;
+				noAtual = noAtual.prox;
+
+			}
+
+		}
+
+}
 
 function add(no){
 
@@ -65,6 +91,7 @@ function show(no){
 add(no1);
 add(no2);
 add(no3);
+addpos(no4,2);
 
 show(head);
 
